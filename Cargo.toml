@@ -1,0 +1,29 @@
+[package]
+name = "async-stream-tls-upgrader"
+version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2018"
+description = "Asynchronous stream tls upgrader."
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/bk-rs/async-stream-packed"
+homepage = "https://github.com/bk-rs/async-stream-packed"
+documentation = "https://docs.rs/async-stream-packed"
+keywords = []
+categories = ["asynchronous"]
+readme = "README.md"
+
+[features]
+async_tls_client = ["async-tls/client"]
+async_tls_server = ["async-tls/server"]
+
+async_native_tls_client = ["async-native-tls"]
+async_native_tls_server = ["async-native-tls"]
+
+[dependencies]
+async-stream-packed = { version = "0.1", default-features = false, features = ["upgradable", "tls"] }
+futures-io = { version = "0.3", default-features = false, features = ["std"] }
+async-trait = { version = "0.1", default-features = false, features = [] }
+
+async-tls = { version = "0.9", default-features = false, features = [], optional = true }
+
+async-native-tls = { version = "0.3", default-features = false, features = ["runtime-async-std"], optional = true }
