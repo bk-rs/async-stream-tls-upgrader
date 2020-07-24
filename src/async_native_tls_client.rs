@@ -7,25 +7,25 @@ use futures_io::{AsyncRead, AsyncWrite};
 use async_stream_packed::tls::TlsClientUpgrader;
 use async_stream_packed::upgradable::Upgrader;
 
-pub struct AsyncTlsClientTlsUpgrader {
+pub struct AsyncNativeTlsClientTlsUpgrader {
     connector: TlsConnector,
     domain: String,
 }
 
-impl AsyncTlsClientTlsUpgrader {
+impl AsyncNativeTlsClientTlsUpgrader {
     pub fn new(connector: TlsConnector, domain: String) -> Self {
         Self { connector, domain }
     }
 }
 
 #[async_trait]
-impl<S> TlsClientUpgrader<S> for AsyncTlsClientTlsUpgrader where
+impl<S> TlsClientUpgrader<S> for AsyncNativeTlsClientTlsUpgrader where
     S: AsyncRead + AsyncWrite + Unpin + Send + 'static
 {
 }
 
 #[async_trait]
-impl<S> Upgrader<S> for AsyncTlsClientTlsUpgrader
+impl<S> Upgrader<S> for AsyncNativeTlsClientTlsUpgrader
 where
     S: AsyncRead + AsyncWrite + Unpin + Send + 'static,
 {
