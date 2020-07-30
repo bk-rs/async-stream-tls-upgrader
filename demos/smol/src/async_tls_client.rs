@@ -7,9 +7,10 @@ use std::io;
 use std::str;
 
 use async_net::TcpStream;
-use async_stream_tls_upgrader::{AsyncTlsClientTlsUpgrader, UpgradableAsyncStream};
 use futures_lite::future::block_on;
 use futures_lite::{AsyncReadExt, AsyncWriteExt};
+
+use async_stream_tls_upgrader::{AsyncTlsClientTlsUpgrader, UpgradableAsyncStream};
 
 fn main() -> io::Result<()> {
     block_on(run())
