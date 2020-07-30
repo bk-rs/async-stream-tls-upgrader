@@ -2,6 +2,12 @@
 
 * [Cargo package](https://crates.io/crates/async-stream-tls-upgrader)
 
+## Examples
+
+### smol 
+
+* [async_tls_client](demos/smol/src/async_tls_client.rs)
+
 ## Dev
 
 ```
