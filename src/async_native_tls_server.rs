@@ -4,8 +4,7 @@ use async_native_tls::{TlsAcceptor, TlsStream};
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
 
-use async_stream_packed::tls::TlsServerUpgrader;
-use async_stream_packed::upgradable::Upgrader;
+use crate::{TlsServerUpgrader, Upgrader, UpgraderExtRefer};
 
 pub struct AsyncNativeTlsServerTlsUpgrader {
     acceptor: TlsAcceptor,
@@ -36,5 +35,18 @@ where
             .await
             .map_err(|err| io::Error::new(io::ErrorKind::Other, err))?;
         Ok(stream)
+    }
+}
+
+impl<S> UpgraderExtRefer<S> for AsyncNativeTlsServerTlsUpgrader
+where
+    S: AsyncRead + AsyncWrite + Unpin + Send + 'static,
+{
+    fn get_ref(output: &Self::Output) -> &S {
+        output.get_ref()
+    }
+
+    fn get_mut(output: &mut Self::Output) -> &mut S {
+        output.get_mut()
     }
 }

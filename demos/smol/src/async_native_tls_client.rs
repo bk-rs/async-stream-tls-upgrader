@@ -1,5 +1,5 @@
 /*
-cargo run -p async-stream-tls-upgrader-demo-smol --bin async_tls_client httpbin.org 443 /ip
+cargo run -p async-stream-tls-upgrader-demo-smol --bin async_native_tls_client echo.websocket.org 443 /
 */
 
 use std::env;
@@ -10,7 +10,7 @@ use async_net::TcpStream;
 use futures_lite::future::block_on;
 use futures_lite::{AsyncReadExt, AsyncWriteExt};
 
-use async_stream_tls_upgrader::{AsyncTlsClientTlsUpgrader, UpgradableAsyncStream};
+use async_stream_tls_upgrader::{AsyncNativeTlsClientTlsUpgrader, UpgradableAsyncStream};
 
 fn main() -> io::Result<()> {
     block_on(run())
@@ -19,7 +19,7 @@ fn main() -> io::Result<()> {
 async fn run() -> io::Result<()> {
     let domain = env::args()
         .nth(1)
-        .unwrap_or_else(|| env::var("DOMAIN").unwrap_or("httpbin.org".to_owned()));
+        .unwrap_or_else(|| env::var("DOMAIN").unwrap_or("echo.websocket.org".to_owned()));
     let port: u16 = env::args()
         .nth(2)
         .unwrap_or_else(|| env::var("PORT").unwrap_or("443".to_owned()))
@@ -27,14 +27,14 @@ async fn run() -> io::Result<()> {
         .unwrap();
     let uri = env::args()
         .nth(3)
-        .unwrap_or_else(|| env::var("URI").unwrap_or("/ip".to_owned()));
+        .unwrap_or_else(|| env::var("URI").unwrap_or("/".to_owned()));
 
-    println!("async_tls_client {} {} {}", domain, port, uri);
+    println!("async_native_tls_client {} {} {}", domain, port, uri);
 
     //
     let addr = format!("{}:{}", domain, port);
     let stream = TcpStream::connect(addr).await?;
-    let upgrader = AsyncTlsClientTlsUpgrader::new(Default::default(), domain.clone());
+    let upgrader = AsyncNativeTlsClientTlsUpgrader::new(Default::default(), domain.clone());
     let mut stream = UpgradableAsyncStream::new(stream, upgrader);
 
     stream.upgrade().await?;

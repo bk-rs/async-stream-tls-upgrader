@@ -1,7 +1,5 @@
 pub use async_stream_packed::{
-    tls::{TlsClientUpgrader, TlsServerUpgrader},
-    upgradable::Upgrader,
-    UpgradableAsyncStream,
+    TlsClientUpgrader, TlsServerUpgrader, UpgradableAsyncStream, Upgrader, UpgraderExtRefer,
 };
 
 #[cfg(feature = "async_tls_client")]

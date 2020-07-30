@@ -8,7 +8,11 @@ edition = "2018"
 name = "async_tls_client"
 path = "src/async_tls_client.rs"
 
+[[bin]]
+name = "async_native_tls_client"
+path = "src/async_native_tls_client.rs"
+
 [dependencies]
-async-stream-tls-upgrader = { path = "../..", version = "0.1", features = ["async_tls_client"]}
+async-stream-tls-upgrader = { path = "../..", version = "0.1", features = ["async_tls_client", "async_native_tls_client"] }
 futures-lite = "0.1"
 async-net = "0.1"
