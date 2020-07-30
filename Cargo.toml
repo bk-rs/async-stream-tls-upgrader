@@ -27,3 +27,8 @@ async-trait = { version = "0.1", default-features = false, features = [] }
 async-tls = { version = "0.9", default-features = false, features = [], optional = true }
 
 async-native-tls = { version = "0.3", default-features = false, features = ["runtime-async-std"], optional = true }
+
+[workspace]
+members = [
+    "demos/smol",
+]

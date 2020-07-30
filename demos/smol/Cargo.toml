@@ -1,0 +1,14 @@
+[package]
+name = "async-stream-tls-upgrader-demo-smol"
+version = "0.1.0"
+authors = ["vkill <vkill.net@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "async_tls_client"
+path = "src/async_tls_client.rs"
+
+[dependencies]
+async-stream-tls-upgrader = { path = "../..", version = "0.1", features = ["async_tls_client"]}
+futures-lite = "0.1"
+async-net = "0.1"
