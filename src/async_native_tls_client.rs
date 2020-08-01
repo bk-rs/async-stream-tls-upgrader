@@ -4,7 +4,7 @@ use async_native_tls::{TlsConnector, TlsStream};
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
 
-use crate::{TlsClientUpgrader, Upgrader, UpgraderExtRefer};
+use async_stream_packed::{TlsClientUpgrader, Upgrader, UpgraderExtRefer};
 
 pub struct AsyncNativeTlsClientTlsUpgrader {
     connector: TlsConnector,

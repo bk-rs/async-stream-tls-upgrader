@@ -4,7 +4,7 @@ use async_tls::{server::TlsStream, TlsAcceptor};
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
 
-use crate::{TlsServerUpgrader, Upgrader};
+use async_stream_packed::{TlsServerUpgrader, Upgrader};
 
 pub struct AsyncTlsServerTlsUpgrader {
     acceptor: TlsAcceptor,

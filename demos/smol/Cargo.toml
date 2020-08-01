@@ -14,5 +14,6 @@ path = "src/async_native_tls_client.rs"
 
 [dependencies]
 async-stream-tls-upgrader = { path = "../..", version = "0.1", features = ["async_tls_client", "async_native_tls_client"] }
+async-stream-packed = { version = "0.1", default-features = false, features = ["upgradable"] }
 futures-lite = "0.1"
 async-net = "0.1"

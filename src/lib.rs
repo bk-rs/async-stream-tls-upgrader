@@ -1,7 +1,3 @@
-pub use async_stream_packed::{
-    TlsClientUpgrader, TlsServerUpgrader, UpgradableAsyncStream, Upgrader, UpgraderExtRefer,
-};
-
 #[cfg(feature = "async_tls_client")]
 pub mod async_tls_client;
 #[cfg(feature = "async_tls_client")]
