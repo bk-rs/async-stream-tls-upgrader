@@ -7,6 +7,9 @@
 ### smol 
 
 * [async_tls_client](demos/smol/src/async_tls_client.rs)
+* [async_native_tls_client](demos/smol/src/async_native_tls_client.rs)
+* [imap_client](demos/smol/src/imap_client.rs)
+* [smtp_client](demos/smol/src/smtp_client.rs)
 
 ## Dev
 
