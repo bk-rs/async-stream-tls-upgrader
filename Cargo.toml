@@ -20,7 +20,7 @@ async_native_tls_client = ["async-native-tls"]
 async_native_tls_server = ["async-native-tls"]
 
 [dependencies]
-async-stream-packed = { version = "0.1.7", default-features = false, features = ["tls"] }
+async-stream-packed = { version = "0.1", default-features = false, features = ["tls"] }
 futures-io = { version = "0.3", default-features = false, features = ["std"] }
 async-trait = { version = "0.1", default-features = false, features = [] }
 

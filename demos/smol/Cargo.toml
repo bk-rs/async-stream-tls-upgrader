@@ -12,8 +12,17 @@ path = "src/async_tls_client.rs"
 name = "async_native_tls_client"
 path = "src/async_native_tls_client.rs"
 
+[[bin]]
+name = "imap_client"
+path = "src/imap_client.rs"
+
+[[bin]]
+name = "smtp_client"
+path = "src/smtp_client.rs"
+
 [dependencies]
 async-stream-tls-upgrader = { path = "../..", version = "0.1", features = ["async_tls_client", "async_native_tls_client"] }
-async-stream-packed = { version = "0.1", default-features = false, features = ["upgradable"] }
+async-stream-packed = { version = "0.1", default-features = false, features = ["upgradable", "mail"] }
 futures-lite = "0.1"
 async-net = "0.1"
+base64 = "0.12.3"
