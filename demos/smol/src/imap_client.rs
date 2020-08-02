@@ -42,8 +42,7 @@ async fn run() -> io::Result<()> {
     let tcp_stream = TcpStream::connect(addr).await?;
     let tls_upgrader = AsyncTlsClientTlsUpgrader::new(Default::default(), domain);
 
-    let mut stream =
-        ImapClientInnerStream::with_imap_tcp_stream_and_tls_upgrader(tcp_stream, tls_upgrader);
+    let mut stream = ImapClientInnerStream::with_imap_client(tcp_stream, tls_upgrader);
 
     let mut buf = vec![0u8; 256];
 
