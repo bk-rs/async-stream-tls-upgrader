@@ -1,6 +1,7 @@
 use std::io;
 
-use async_native_tls::{TlsAcceptor, TlsStream};
+pub use async_native_tls::TlsAcceptor;
+use async_native_tls::TlsStream;
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
 
