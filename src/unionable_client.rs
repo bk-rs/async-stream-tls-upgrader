@@ -97,7 +97,7 @@ where
         cx: &mut Context,
         buf: &mut [u8],
     ) -> Poll<io::Result<usize>> {
-        unionable_tls_stream!(self.get_mut(), ref mut s => Pin::new(s).poll_write(cx, buf))
+        unionable_tls_stream!(self.get_mut(), ref mut s => Pin::new(s).poll_read(cx, buf))
     }
 }
 
