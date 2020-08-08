@@ -1,6 +1,6 @@
 [package]
 name = "async-stream-tls-upgrader"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["vkill <vkill.net@gmail.com>"]
 edition = "2018"
 description = "Asynchronous stream tls upgrader."
