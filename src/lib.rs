@@ -17,3 +17,11 @@ pub use async_native_tls_client::AsyncNativeTlsClientTlsUpgrader;
 pub mod async_native_tls_server;
 #[cfg(feature = "async_native_tls_server")]
 pub use async_native_tls_server::AsyncNativeTlsServerTlsUpgrader;
+
+//
+//
+//
+#[cfg(any(feature = "async_tls_client", feature = "async_native_tls_client"))]
+pub mod unionable_client;
+#[cfg(any(feature = "async_tls_client", feature = "async_native_tls_client"))]
+pub use unionable_client::UnionableTlsClientUpgrader;

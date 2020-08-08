@@ -1,6 +1,6 @@
 use std::io;
 
-use async_native_tls::TlsStream;
+pub(crate) use async_native_tls::TlsStream;
 pub use async_native_tls::{Certificate, Identity, Protocol, TlsConnector};
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};

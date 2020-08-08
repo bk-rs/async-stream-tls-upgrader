@@ -32,6 +32,9 @@ async-tls = { version = "0.9", default-features = false, features = [], optional
 
 async-native-tls = { version = "0.3", default-features = false, features = ["runtime-async-std"], optional = true }
 
+[dev-dependencies]
+futures-lite = { version = "0.1", default-features = false, features = [] }
+
 [workspace]
 members = [
     "demos/smol",

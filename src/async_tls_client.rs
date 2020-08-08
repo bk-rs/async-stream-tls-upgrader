@@ -1,6 +1,6 @@
 use std::io;
 
-use async_tls::client::TlsStream;
+pub(crate) use async_tls::client::TlsStream;
 pub use async_tls::TlsConnector;
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
