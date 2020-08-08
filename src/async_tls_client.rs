@@ -1,8 +1,11 @@
 use std::io;
 
-use async_tls::{client::TlsStream, TlsConnector};
+use async_tls::client::TlsStream;
+pub use async_tls::TlsConnector;
 use async_trait::async_trait;
 use futures_io::{AsyncRead, AsyncWrite};
+pub use rustls::ClientConfig;
+pub use webpki_roots::TLS_SERVER_ROOTS;
 
 use async_stream_packed::{TlsClientUpgrader, Upgrader, UpgraderExtRefer};
 

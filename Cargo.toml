@@ -13,8 +13,8 @@ categories = ["asynchronous"]
 readme = "README.md"
 
 [features]
-async_tls_client = ["async-tls/client"]
-async_tls_server = ["async-tls/server"]
+async_tls_client = ["async-tls/client", "rustls", "webpki-roots"]
+async_tls_server = ["async-tls/server", "rustls"]
 
 async_native_tls_client = ["async-native-tls"]
 async_native_tls_server = ["async-native-tls"]
@@ -23,6 +23,10 @@ async_native_tls_server = ["async-native-tls"]
 async-stream-packed = { version = "0.1", default-features = false, features = ["tls"] }
 futures-io = { version = "0.3", default-features = false, features = ["std"] }
 async-trait = { version = "0.1", default-features = false, features = [] }
+
+# rustls common
+rustls = { version = "0.18", default-features = false, features = [], optional = true }
+webpki-roots = { version = "0.20", default-features = false, features = [], optional = true }
 
 async-tls = { version = "0.9", default-features = false, features = [], optional = true }
 
