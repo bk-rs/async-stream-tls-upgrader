@@ -26,6 +26,7 @@ where
     S: AsyncRead + AsyncWrite + Unpin + Send + 'static,
 {
     type Output = UnionableTlsStream<S>;
+    #[allow(unused_variables)]
     async fn upgrade(&mut self, stream: S) -> io::Result<Self::Output> {
         match self {
             #[cfg(feature = "async_tls_client")]
@@ -38,6 +39,11 @@ where
                 let stream = upgrader.upgrade(stream).await?;
                 Ok(UnionableTlsStream::AsyncNativeTls(stream))
             }
+            #[cfg(all(
+                not(feature = "async_tls_client"),
+                not(feature = "async_native_tls_client")
+            ))]
+            _ => unreachable!(),
         }
     }
 }
@@ -63,6 +69,11 @@ pub enum UnionableTlsStream<S> {
     AsyncTls(crate::async_tls_client::TlsStream<S>),
     #[cfg(feature = "async_native_tls_client")]
     AsyncNativeTls(crate::async_native_tls_client::TlsStream<S>),
+    #[cfg(all(
+        not(feature = "async_tls_client"),
+        not(feature = "async_native_tls_client")
+    ))]
+    Never(std::marker::PhantomData<S>),
 }
 
 macro_rules! unionable_tls_stream {
@@ -72,10 +83,16 @@ macro_rules! unionable_tls_stream {
             UnionableTlsStream::AsyncTls($pattern) => $result,
             #[cfg(feature = "async_native_tls_client")]
             UnionableTlsStream::AsyncNativeTls($pattern) => $result,
+            #[cfg(all(
+                not(feature = "async_tls_client"),
+                not(feature = "async_native_tls_client")
+            ))]
+            UnionableTlsStream::Never(_) => unreachable!(),
         }
     };
 }
 
+#[allow(unused_variables)]
 impl<S> UnionableTlsStream<S>
 where
     S: AsyncRead + AsyncWrite + Unpin,
@@ -88,6 +105,7 @@ where
     }
 }
 
+#[allow(unused_variables)]
 impl<S> AsyncRead for UnionableTlsStream<S>
 where
     S: AsyncRead + AsyncWrite + Unpin,
@@ -101,6 +119,7 @@ where
     }
 }
 
+#[allow(unused_variables)]
 impl<S> AsyncWrite for UnionableTlsStream<S>
 where
     S: AsyncRead + AsyncWrite + Unpin,

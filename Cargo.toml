@@ -13,10 +13,12 @@ categories = ["asynchronous"]
 readme = "README.md"
 
 [features]
-async_tls_client = ["async-tls/client", "rustls", "webpki-roots"]
+unionable_client = []
+
+async_tls_client = ["unionable_client", "async-tls/client", "rustls", "webpki-roots"]
 async_tls_server = ["async-tls/server", "rustls"]
 
-async_native_tls_client = ["async-native-tls"]
+async_native_tls_client = ["unionable_client", "async-native-tls"]
 async_native_tls_server = ["async-native-tls"]
 
 [dependencies]

@@ -1,3 +1,10 @@
+#[cfg(feature = "unionable_client")]
+#[cfg(test)]
+mod unionable_client_tests {
+    #[allow(unused_imports)]
+    use async_stream_tls_upgrader::UnionableTlsClientUpgrader;
+}
+
 #[cfg(feature = "async_tls_client")]
 #[cfg(test)]
 mod unionable_client_with_async_tls_client_tests {
