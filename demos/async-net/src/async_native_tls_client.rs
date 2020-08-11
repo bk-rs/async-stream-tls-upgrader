@@ -1,5 +1,5 @@
 /*
-cargo run -p async-stream-tls-upgrader-demo-smol --bin async_native_tls_client echo.websocket.org 443 /
+cargo run -p async-stream-tls-upgrader-demo-async-net --bin async_native_tls_client echo.websocket.org 443 /
 */
 
 use std::env;

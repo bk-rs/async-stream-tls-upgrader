@@ -4,12 +4,12 @@
 
 ## Examples
 
-### smol 
+### async-net 
 
-* [async_tls_client](demos/smol/src/async_tls_client.rs)
-* [async_native_tls_client](demos/smol/src/async_native_tls_client.rs)
-* [imap_client](demos/smol/src/imap_client.rs)
-* [smtp_client](demos/smol/src/smtp_client.rs)
+* [async_tls_client](demos/async-net/src/async_tls_client.rs)
+* [async_native_tls_client](demos/async-net/src/async_native_tls_client.rs)
+* [imap_client](demos/async-net/src/imap_client.rs)
+* [smtp_client](demos/async-net/src/smtp_client.rs)
 
 ## Dev
 

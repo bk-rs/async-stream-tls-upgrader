@@ -1,5 +1,5 @@
 /*
-cargo run -p async-stream-tls-upgrader-demo-smol --bin async_tls_client httpbin.org 443 /ip
+cargo run -p async-stream-tls-upgrader-demo-async-net --bin async_tls_client httpbin.org 443 /ip
 */
 
 use std::env;
